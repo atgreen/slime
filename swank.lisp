@@ -26,6 +26,13 @@
   "When true, print extra debugging information.")
 
 (defvar *backtrace-pprint-dispatch-table*
+  ;; TorCL exports the pretty-printer dispatch symbols but defines neither
+  ;; SET-PPRINT-DISPATCH nor PPRINT-DISPATCH (bliss-kp8ix), so there is nothing
+  ;; to customise: backtrace strings print with the standard escaping instead of
+  ;; this table's. Binding *PRINT-PPRINT-DISPATCH* to the plain table keeps the
+  ;; rest of *BACKTRACE-PRINTER-BINDINGS* working.
+  #+torcl (copy-pprint-dispatch nil)
+  #-torcl
   (let ((table (copy-pprint-dispatch nil)))
     (flet ((print-string (stream string)
              (cond (*print-escape* 
