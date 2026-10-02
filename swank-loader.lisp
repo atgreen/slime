@@ -53,13 +53,12 @@
   #+clasp '(metering (swank clasp) (swank gray))
   #+mkcl '((swank mkcl) (swank gray))
   #+mezzano '((swank mezzano) (swank gray))
-  #+torcl '((swank torcl) (swank gray))
   #+egcl '((swank egcl) (swank gray))
   )
 
 (defparameter *implementation-features*
   '(:allegro :lispworks :sbcl :clozure :cmu :clisp :ccl :corman :cormanlisp
-    :armedbear :gcl :ecl :scl :mkcl :clasp :mezzano :torcl :egcl))
+    :armedbear :gcl :ecl :scl :mkcl :clasp :mezzano :egcl))
 
 (defparameter *os-features*
   '(:macosx :linux :windows :mswindows :win32 :solaris :darwin :sunos :hpux
@@ -109,7 +108,7 @@
   #+clisp     (let ((s (lisp-implementation-version)))
                 (subseq s 0 (position #\space s)))
   #+armedbear (lisp-implementation-version)
-  #+(or torcl egcl) (lisp-implementation-version)
+  #+egcl (lisp-implementation-version)
   #+ecl (ecl-version-string)
   #+clasp (clasp-version-string)
   #+mezzano (let ((s (lisp-implementation-version)))

@@ -53,7 +53,6 @@
                              (:file "clasp" :if-feature :clasp)
                              (:file "mkcl" :if-feature :mkcl)
                              (:file "mezzano" :if-feature :mezzano)
-                             (:file "torcl" :if-feature :torcl)
                              (:file "egcl" :if-feature :egcl)
                              (:file "gray")
                              (:file "match")
